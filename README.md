@@ -19,4 +19,9 @@ Pre Requirements:
 - sshpass
 - Unicorn Hat (Hardware & Software) "\curl -sS get.pimoroni.com/unicornhat | bash"
 
+Files:
+- piping.py (Program)
+- pipingservice.sh (service)
+- clearunicorn.py (clear Unicornhat LED´s Scrypt)
+
 I´m not a proffessional developer, this is only a home project, that I want to share and maybe get some improvments by other.
