@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 #########################################################################################
-# Bibliotheken importieren START
+# import libraries START
 #########################################################################################
 
 import os
@@ -11,32 +11,41 @@ import time
 import base64
 
 #########################################################################################
-# Bibliotheken importieren ENDE
+# import libraries END
 #########################################################################################
 
 
 
 #########################################################################################
-# Variablen START
+# variables START
 #########################################################################################
 
+#set sleep time in seconds
 w = 1
+
+#set ping recurrence
 p = "1"
 
+#set working time schedule
 starttime = datetime.time(6)
 endtime = datetime.time(23, 30)
 
+#set hosts to ping
 hosts = ["192.168.222.1", "192.168.111.1", "192.168.111.253", "192.168.111.252",
          "192.168.111.4", "192.168.111.6", "192.168.111.8", "192.168.111.15",
          "192.168.111.10", "192.168.111.11", "192.168.111.12", "192.168.111.13",
          "192.168.111.9", "192.168.111.7", "", "8.8.8.8"]
 
+#set mac addresses 
 hostsmac = ["", "", "", "",
             "", "", "", "",
             "10:60:4b:92:79:84", "", "a0:1d:48:c7:07:50", "",
             "", "", "", ""]
 
+#set led brightness
 led.brightness(0.3)
+
+#rgb colours
 green = [0, 255, 0]
 red = [255, 0, 0]
 blue = [0, 0, 255]
@@ -46,45 +55,26 @@ white = [255, 255, 255]
 orange = [255, 165, 0]
 
 #########################################################################################
-# Variablen ENDE
+# variables END
 #########################################################################################
 
 
 
 #########################################################################################
-# Funktionen Prozeduren START
+# functions procedures START
 #########################################################################################
 
-def led_red():
+#illuminate whole field
+def led_field(colour):
     led.clear()
     for y in range(8):
         for x in range(8):
-            led.set_pixel(x, y, red[0], red[1], red[2])
+            led.set_pixel(x, y, colour[0], colour[1], colour[2])
     led.show()
     time.sleep(w)
     return;
 
-
-def led_green():
-    led.clear()
-    for y in range(8):
-        for x in range(8):
-            led.set_pixel(x, y, green[0], green[1], green[2])
-    led.show()
-    time.sleep(w)
-    return;
-
-
-def led_blue():
-    led.clear()
-    for y in range(8):
-        for x in range(8):
-            led.set_pixel(x, y, blue[0], blue[1], blue[2])
-    led.show()
-    time.sleep(w)
-    return;
-
-
+#draw a reset picture
 def led_reset():
     led.clear()
     led.set_pixel(1, 1, orange[0], orange[1], orange[2])
@@ -106,7 +96,7 @@ def led_reset():
     time.sleep(w)
     return;
 
-
+#wait for router with ping test
 def led_router():
     led.clear()
     led.show()
@@ -188,7 +178,7 @@ def led_router():
             time.sleep(w)
     return;
 
-
+#not complete
 def led_eth(eth):
     for a in range(7):
         led.set_pixel(a, 0, red[0], red[1], red[2])
@@ -232,7 +222,7 @@ def led_eth(eth):
     led.show()
     return;
 
-
+#draw arrows in direction to the hardware interface
 def led_arrow():
     x = 0
     y = 7
@@ -247,7 +237,7 @@ def led_arrow():
         led.clear()
     return;
 
-
+#wait for system till it is down
 def led_poweroff(hostn):
     x = 0
     while (os.system("ping -c " + p + " " + hostn)) == 0:
@@ -293,7 +283,7 @@ def led_poweroff(hostn):
         led.show()
         time.sleep(w)
 
-
+# reset arp cache and led field
 def clearsystem():
     led.clear()
     led.rotation(0)
@@ -302,12 +292,12 @@ def clearsystem():
     led.show()
     return;
 
-
+#send wol packet
 def wol(mac):
     os.system("wakeonlan " + mac)
     return;
 
-
+#ping the 16 systems defined in hosts(blue=not defined, red=offline, green=online)
 def led_piping():
     x = 0
     y = 0
@@ -347,20 +337,20 @@ def led_piping():
         time.sleep(w)
     return;
 
-
+#ssh connection with base64 encrypted password and command
 def sshconnect(hostn, b64password, command):
     os.system("sshpass -p " + base64.b64decode(b64password) + " ssh " + hostn + " " + command)
     return;
 
 
 #########################################################################################
-# Funktionen Prozeduren ENDE
+# functions procedures END
 #########################################################################################
 
 
 
 #########################################################################################
-# Hauptprogram START
+# Main START
 #########################################################################################
 
 def main():
@@ -397,5 +387,5 @@ if __name__ == '__main__':
     main()
 
 #########################################################################################
-# Hauptprogram ENDE
+# Main END
 #########################################################################################
