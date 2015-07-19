@@ -370,12 +370,12 @@ def main():
             else:
                 if (os.system("ping -c " + p + " " + hosts[8])) == 0:
                     led.clear()
-                    sshconnect(hosts[8], "###################", "poweroff")
+                    sshconnect(hosts[8], "base64-password", "poweroff")
                     led_poweroff(hosts[8])
                     led_reset()
                 if (os.system("ping -c " + p + " " + hosts[10])) == 0:
                     led.clear()
-                    sshconnect(hosts[10], "###################", "poweroff")
+                    sshconnect(hosts[10], "base64-password", "poweroff")
                     led_poweroff(hosts[10])
                     led_reset()
                 continue
