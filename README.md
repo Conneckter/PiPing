@@ -33,5 +33,6 @@ Installation:
 - /etc/init.d/pipingservice.sh
 - /usr/local/bin/piping/piping.py
 - /usr/local/bin/piping/clearunicorn.py
+- chmod 777 to the files
 - Register service at boot time
 - sudo update-rc.d pipingservice.sh defaults
