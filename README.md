@@ -25,3 +25,14 @@ Files:
 - clearunicorn.py (clear Unicornhat LED´s Scrypt)
 
 I´m not a proffessional developer, this is only a home project, that I want to share and maybe get some improvments by other.
+
+Installation:
+Install all pre requirements first!
+Edit piping.py to your reqirements.
+Copy files to the following locations on yout Raspberry Pi:
+/etc/pipingservice.sh
+/usr/local/bin/piping/piping.py
+/usr/local/bin/piping/clearunicorn,py
+
+Register service at boot time
+sudo update-rc.d pipingservice.sh defaults
