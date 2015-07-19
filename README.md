@@ -30,8 +30,8 @@ Installation:
 - Install all pre requirements first!
 - Edit piping.py to your requirements.
 - Copy files to the following locations on your Raspberry Pi:
-- /etc/pipingservice.sh
--  /usr/local/bin/piping/piping.py
--  /usr/local/bin/piping/clearunicorn.py
+- /etc/init.d/pipingservice.sh
+- /usr/local/bin/piping/piping.py
+- /usr/local/bin/piping/clearunicorn.py
 - Register service at boot time
 - sudo update-rc.d pipingservice.sh defaults
