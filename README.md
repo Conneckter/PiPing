@@ -32,7 +32,7 @@ Edit piping.py to your reqirements.
 Copy files to the following locations on yout Raspberry Pi:
 /etc/pipingservice.sh
 /usr/local/bin/piping/piping.py
-/usr/local/bin/piping/clearunicorn,py
+/usr/local/bin/piping/clearunicorn.py
 
 Register service at boot time
 sudo update-rc.d pipingservice.sh defaults
